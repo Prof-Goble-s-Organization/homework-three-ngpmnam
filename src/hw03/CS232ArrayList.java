@@ -1,5 +1,6 @@
 package hw03;
 
+
 /**
  * An implementation of the CS132List interface backed with an array of Objects.
  * 
@@ -93,7 +94,7 @@ public class CS232ArrayList<E> implements CS232List<E> {
      * @param element the object to be inserted.
      * @throws IndexOutOfBoundsException if index < 0 or index >= size()
      */
-    public void insert(int index, E element) throws IndexOutOfBoundsException {
+    public void insert(int index, E element) throws IndexOutOfBoundsException 	{
         if (index < 0 || index > currentSize) {
             throw new IndexOutOfBoundsException("accessed " + index + " but size is " + currentSize);
         }

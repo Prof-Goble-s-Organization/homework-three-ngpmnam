@@ -1,5 +1,6 @@
 package hw03;
 
+
 /**
  * Doubly linked list implementation of the CS232List interface.
  * 
@@ -42,7 +43,7 @@ public class CS232DoublyLinkedList<E> implements CS232List<E> {
 		DLLNode pred = tail.prev;
 		DLLNode node = new DLLNode(element, pred, tail);
 		pred.next = node;
-		tail.prev = node;
+		tail.prev = node; // ASK QUESTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN: Will TAIL.ELEMENT forever be null if not set?
 
 		size++;
 	}
@@ -56,9 +57,9 @@ public class CS232DoublyLinkedList<E> implements CS232List<E> {
 		checkBounds(index);
 		DLLNode cur = head.next;
 		for (int i = 0; i < index; i++) {
-			cur = cur.next;
+			cur = cur.next;//INDEX 1 == NULL???
 		}
-		return cur;
+		return cur;// DOES THIS MEAN THAT THE HEAD AND TAIL ARE NEVER COUNTED? AND FOREVER NULL AND THE FIRST ELEMENT IS THE ONE WE ADD???? 
 	}
 
 	/*
@@ -81,6 +82,7 @@ public class CS232DoublyLinkedList<E> implements CS232List<E> {
 
 	/**
 	 * {@inheritDoc}
+	 * ASK QUESTIONSSSSSSSSSSSSSSSSSSSSSSSSSSSSS: WHAT IF WE NEVER SET HEAD.ELEMENT? WILL IT ALWAYS BE NULL?
 	 */
 	public void set(int index, E element) throws IndexOutOfBoundsException {
 		DLLNode node = getNode(index);
@@ -114,8 +116,11 @@ public class CS232DoublyLinkedList<E> implements CS232List<E> {
 	 * {@inheritDoc}
 	 */
 	public E remove(int index) throws IndexOutOfBoundsException {
-		// Intentionally not implemented.
-		return null;
+		DLLNode remove = getNode(index);
+		remove.next.prev = remove.prev;
+		remove.prev.next = remove.next;
+		size--;
+		return remove.element;
 	}
 
 	/**
@@ -128,7 +133,7 @@ public class CS232DoublyLinkedList<E> implements CS232List<E> {
 	 *             if index < 0 or index >= size()
 	 */
 	public void clearTo(int index) throws IndexOutOfBoundsException {
-		// Intentionally not implemented.
+		
 	}
 
 	/**
