@@ -205,6 +205,10 @@ public class CS232DoublyLinkedList<E> implements CS232List<E> {
 			this.prev = prev;
 			this.next = next;
 		}
+		
+		public E getPrev() {
+			return prev.element;
+		}
 	}
 
 	/**

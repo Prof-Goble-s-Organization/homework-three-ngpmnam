@@ -180,7 +180,7 @@ public class CS232IterableDoublyLinkedList<E> implements CS232List<E>,
 		}
 
 		public E previous() {
-			if(!hasPrevious()) {
+			if(hasPrevious() == false) {
 				throw new NoSuchElementException("There is no previous element");
 			}
 			cursor = cursor.prev;
@@ -196,9 +196,25 @@ public class CS232IterableDoublyLinkedList<E> implements CS232List<E>,
 		}
 
 		public E remove() {
-			// Intentionally not implemented, see HW assignment!
-			throw new UnsupportedOperationException("Not implemented");
+			E removed = cursor.element;
+			if(!hasNext() && !hasPrevious()) {
+				cursor = head;
+				cursor.next = tail;
+				cursor.next.prev = head;
+			}
+			else if (!hasPrevious()) {
+				next();
+				cursor.prev = head;
+				head.next = cursor;
+			}
+			previous();
+			cursor.next.next.prev = cursor;
+			cursor.next = cursor.next.next;
+			size--;
+			next();
+			return removed;
 		}
+
 	}
 	
 	/**
