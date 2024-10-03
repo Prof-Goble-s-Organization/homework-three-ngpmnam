@@ -166,8 +166,8 @@ public class CS232DoublyLinkedList<E> implements CS232List<E> {
 		DLLNode firstOfNewList = list.getNode(0);
 		
 		if(index == 0) {
-			lastOfNewList.next = head.next;
 			head.next.prev = lastOfNewList;
+			lastOfNewList.next = head.next;
 			head.next = firstOfNewList;
 			firstOfNewList.prev = head;
 			

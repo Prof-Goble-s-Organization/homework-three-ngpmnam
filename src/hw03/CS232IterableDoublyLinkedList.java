@@ -176,7 +176,7 @@ public class CS232IterableDoublyLinkedList<E> implements CS232List<E>,
 		}
 
 		public boolean hasPrevious() {
-			return cursor != head;
+			return cursor.prev != head;
 		}
 
 		public E previous() {
