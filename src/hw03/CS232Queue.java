@@ -22,7 +22,7 @@ public interface CS232Queue<T> {
      *          the Object at the head of the Queue or null
      *          if the Queue is empty.
      */
-    public Object remove();
+    public T remove();
 
     /**
      * Return a reference to the Object at the head of the Queue without 
@@ -32,7 +32,7 @@ public interface CS232Queue<T> {
      *          a reference to the Object at the head of the Queue or
      *          null if the Queue is empty.
      */
-    public Object peek();
+    public T peek();
 
     /**
      * Return the number of elements in the Queue.
