@@ -1,5 +1,10 @@
 package hw03;
 
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
+
+import org.junit.Before;
+
 /**
  * An implementation of the CS132List interface backed with an array of Objects.
  * 
@@ -93,7 +98,7 @@ public class CS232ArrayList<E> implements CS232List<E> {
      * @param element the object to be inserted.
      * @throws IndexOutOfBoundsException if index < 0 or index >= size()
      */
-    public void insert(int index, E element) throws IndexOutOfBoundsException {
+    public void insert(int index, E element) throws IndexOutOfBoundsException 	{
         if (index < 0 || index > currentSize) {
             throw new IndexOutOfBoundsException("accessed " + index + " but size is " + currentSize);
         }
@@ -144,4 +149,73 @@ public class CS232ArrayList<E> implements CS232List<E> {
             return elem;
         }
     }
+    
+    public CS232Iterator<E> getIterator(){
+    	return new IteratorArrayList();
+    }
+
+	private class IteratorArrayList implements CS232Iterator<E>{
+    	private int cursor;
+    	
+    	public IteratorArrayList() {
+    		cursor = 0;
+    	}
+    	
+    	
+		@Override
+		public boolean hasNext() {
+			int next = cursor + 1;
+			if (next < size()) {
+				return true;
+			}
+			return false;
+//			return cursor < currentSize;
+		}
+
+		@Override
+		public E next() {
+			if(hasNext() == false) {
+				throw new NoSuchElementException();
+			}
+			else {
+				cursor += 1;
+				return get(cursor);
+//				E target = get(cursor);
+//				cursor += 1;
+//				return target;
+			}
+
+		}
+
+		@Override
+		public boolean hasPrevious() {
+			int prev = cursor - 1;
+			if (prev >= 0) {
+				return true;
+			}
+			return false;
+		}
+
+		@Override
+		public E previous() {
+			if(hasPrevious() == false) {
+				throw new NoSuchElementException();
+			}
+			cursor -= 1;
+			return get(cursor);
+		}
+
+		@Override
+		public void insert(E element) {
+			throw new UnsupportedOperationException();			
+		}
+
+		@Override
+		public E remove() {
+			throw new UnsupportedOperationException();
+		}
+    	
+    }
+ 
+
 }
