@@ -164,12 +164,12 @@ public class CS232ArrayList<E> implements CS232List<E> {
     	
 		@Override
 		public boolean hasNext() {
-//			int next = cursor + 1;
-//			if (next < size()) {
-//				return true;
-//			}
-//			return false;
-			return cursor < currentSize;
+			int next = cursor + 1;
+			if (next < size()) {
+				return true;
+			}
+			return false;
+//			return cursor < currentSize;
 		}
 
 		@Override
