@@ -5,7 +5,7 @@ public class CS232ArrayStack<T> implements CS232Stack<T>{
 	private CS232ArrayList<T> arrayList;
 	
 	public CS232ArrayStack() {
-		arrayList = new CS232ArrayList();
+		arrayList = new CS232ArrayList<T>();
 	}
 
 	@Override
